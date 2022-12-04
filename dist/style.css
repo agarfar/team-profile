@@ -1,0 +1,13 @@
+
+
+.custom-header{
+    background-image: linear-gradient(to right, rgb(55, 87, 228), rgb(1, 0, 68));
+}
+
+.values{
+    color:white;
+}
+
+.custom-card{
+    background-color: rgb(23, 23, 56);
+}
