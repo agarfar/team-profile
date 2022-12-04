@@ -99,9 +99,9 @@ const employeeQuestion = [
 // create function that runs inquirer prompt questions .then( ()=> inquirer.prompt()then) // chain promises
 
 const teamQuestions = () => {
-    managerPrompt()
+    return managerPrompt()
         .then(() => {
-            employeePrompt();
+            return employeePrompt();
         })
 }
 
@@ -134,13 +134,13 @@ const employeePrompt = () => {
         .prompt(employeeQuestion)
         .then((answer) => {
             if (answer.employee === 'Engineer') {
-                engineerPrompt()
+                return engineerPrompt()
                     .then(() => {
                         return employeePrompt();
                     })
             }
             if (answer.employee === 'Intern') {
-                internPrompt()
+                return internPrompt()
                     .then(() => {
                         return employeePrompt();
                     })
@@ -151,6 +151,7 @@ const employeePrompt = () => {
             }
         })
 }
+
 generateManager = () => {
     let template = '';
     employeeList.forEach(employee => {
@@ -217,7 +218,7 @@ generateIntern = () => {
 }
 
 const generateHTML = () => {
-    `<html lang="en">
+    return `<html lang="en">
     <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -246,14 +247,13 @@ const generateHTML = () => {
 teamQuestions()
     .then(() => {
         const htmlPageContent = generateHTML();
+        console.log(htmlPageContent);
         fs.writeFile('./dist/index.html', htmlPageContent, (err) =>
             err ? console.log(err) : console.log('Successfully created index.html!')
         );
     })
 
 // end point = loop employee array = convert into HTML
-
-
 
 // const htmlPageContent = generateHTML();
 
