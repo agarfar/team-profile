@@ -151,11 +151,6 @@ const employeePrompt = () => {
             }
         })
 }
-
-teamQuestions();
-
-// end point = loop employee array = convert into HTML
-
 generateManager = () => {
     let template = '';
     employeeList.forEach(employee => {
@@ -248,10 +243,22 @@ const generateHTML = () => {
     </html>`;
 }
 
-const htmlPageContent = generateHTML();
+teamQuestions()
+    .then(() => {
+        const htmlPageContent = generateHTML();
+        fs.writeFile('./dist/index.html', htmlPageContent, (err) =>
+            err ? console.log(err) : console.log('Successfully created index.html!')
+        );
+    })
 
-fs.writeFile('./dist/index.html', htmlPageContent, (err) =>
-    err ? console.log(err) : console.log('Successfully created index.html!')
-);
+// end point = loop employee array = convert into HTML
+
+
+
+// const htmlPageContent = generateHTML();
+
+// fs.writeFile('./dist/index.html', htmlPageContent, (err) =>
+//     err ? console.log(err) : console.log('Successfully created index.html!')
+// );
 
 // write tests
