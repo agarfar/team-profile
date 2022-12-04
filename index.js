@@ -2,12 +2,11 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 
-const Employee = require('./lib/employee');
+// const Employee = require('./lib/employee');
 const Manager = require('./lib/manager');
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
-// const engineerList = [];
-// const internList = [];
+
 const employeeList = [];
 
 const managerQuestions = [
@@ -18,7 +17,7 @@ const managerQuestions = [
     },
 
     {
-        type: "input",
+        type: "number",
         message: "Enter team manager's employee ID:",
         name: "id",
     },
@@ -30,7 +29,7 @@ const managerQuestions = [
     },
 
     {
-        type: "input",
+        type: "number",
         message: "Enter team manager's office number:",
         name: "officeNumber",
     },
@@ -44,7 +43,7 @@ const engineerQuestions = [
     },
 
     {
-        type: "input",
+        type: "number",
         message: "Enter engineer's employee ID:",
         name: "id",
     },
@@ -70,7 +69,7 @@ const internQuestions = [
     },
 
     {
-        type: "input",
+        type: "number",
         message: "Enter intern's employee ID:",
         name: "id",
     },
@@ -97,50 +96,7 @@ const employeeQuestion = [
     },
 ]
 
-// employees = [{Manager}, {Engineer}, {Intern}]
-
 // create function that runs inquirer prompt questions .then( ()=> inquirer.prompt()then) // chain promises
-
-// const teamQuestions = () => {
-//     // inquirer
-//     //     .prompt(managerQuestions)
-//     //     .then((answers) => {
-//     //         employeeList.push(new Manager(answers.name, answers.id, answers.email, answers.officeNumber))
-//     //     })
-//     managerPrompt()
-//         .then(() => {
-//             // inquirer
-//             //     .prompt(employeeQuestion)
-//             //     .then((employeeAnswer) => {
-//             //         return employeeAnswer;
-//             //     })
-//             employeePrompt()
-//                 .then((response) => {
-//                     if (response === 'Engineer') {
-//                         // inquirer
-//                         //     .prompt(engineerQuestions)
-//                         //     .then((answers) => {
-//                         //         employeeList.push(new Engineer(answers.name, answers.id, answers.email, answers.github))
-//                         //     })
-//                         engineerPrompt()
-//                         employeePrompt()
-//                     }
-//                     if (response === 'Intern') {
-//                         // inquirer
-//                         //     .prompt(internQuestions)
-//                         //     .then((answers) => {
-//                         //         employeeList.push(new Intern(answers.name, answers.id, answers.email, answers.school))
-//                         //     })
-//                         internPrompt();
-//                     }
-//                     else {
-//                         console.log(employeeList);
-//                         return employeeList;
-//                     }
-//                 })
-
-//         })
-// }
 
 const teamQuestions = () => {
     managerPrompt()
@@ -148,40 +104,6 @@ const teamQuestions = () => {
             employeePrompt();
         })
 }
-
-// import inquirer from "inquirer";
-
-// const questions = [
-//   {
-//     type: "number",
-//     name: "children_count",
-//     message: "How many children do you have?",
-//   },
-//   {
-//     type: "input",
-//     name: "first_child_name",
-//     message: "What is the eldest child's name?",
-//   },
-//   {
-//     type: "confirm",
-//     name: "is_finished",
-//     message: "Are you done?",
-//   },
-// ];
-
-// function getAnswers() {
-//   return inquirer.prompt(questions).then((answers) => {
-//     if (answers.is_finished) {
-//       return answers;
-//     } else {
-//       return getAnswers();
-//     }
-//   });
-// }
-
-// getAnswers()
-//   .then(console.log)
-//   .catch((error) => {});
 
 const managerPrompt = () => {
     return inquirer
@@ -234,86 +156,102 @@ teamQuestions();
 
 // end point = loop employee array = convert into HTML
 
-// const generateHTML = () =>{
-//     `<html lang="en"><head>
-//   <meta charset="utf-8">
-//   <meta name="viewport" content="width=device-width, initial-scale=1">
-//   <title>Weather Dashboard</title>
-//   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-//   <link rel="stylesheet" href="./assets/css/style.css">
-// </head>
+generateManager = () => {
+    let template = '';
+    employeeList.forEach(employee => {
+        if (employee.getRole() === 'Manager') {
+            template +=
+                `<div class="custom-card card me-3" style="width: 18rem;">
+                    <div class="card-body">
+                        <h4 class="values">${employee.name}</h4>
+                        <h5 class="values">Manager</h5>
+                        <h6 class="card-title values pb-2">ID: ${employee.id}</h6>
+                        <h6 class="card-title values pb-2">Email: ${employee.email}</h6>
+                        <h6 class="card-title values">Office Number: ${employee.officeNumber}</h6>
+                    </div>
+                </div>`
+        }
+    });
+    return template;
+}
 
-// <body>
-//   <!-- Header containing application title -->
-//   <header class="custom-header text-light p-3">
-//       <div class="text-center">
-//           <h3>My Team</h3>
-//       </div>
-//   </header>
-//   <div class="d-flex col-12 flex-row">
-//       <div class="d-flex col-9 flex-column" style="width: 80vw">
-//           <!-- 5-Day Forecast -->
-//           <div class="col-9 d-flex flex-column" style="width: 100%;">
-//               <div class="forecast-cards d-flex flex-row">
-//               <div class="custom-card card me-3" style="width: 18rem;">
-//                       <div class="card-body">
-//                           <h4 class="values">Erica</h4>
-//                           <h5 class="values">Manager</h5>
-//                           <h6 class="card-title values forecast-temp pb-2">ID: 23</h6>
-//                           <h6 class="card-title values forecast-wind pb-2">Email: erica@gmail.com</h6>
-//                           <h6 class="card-title values forecast-humidity">Office Number: 69%</h6>
-//                       </div>
-//                   </div>
+generateEngineer = () => {
+    let template = '';
+    let engineerList = [];
+    employeeList.forEach(employee => {
+        if (employee.getRole() === 'Engineer') {
+            engineerList.push(employee)
+        }
+    })
+    for (let i = 0; i < engineerList.length; i++) {
+        template +=
+            `<div class="custom-card card me-3" style="width: 18rem;">
+            <div class="card-body">
+                <h4 class="values">${engineerList[i].name}</h4>
+                    <h5 class="values">Intern</h5>
+                    <h6 class="card-title values pb-2">ID: ${engineerList[i].id}</h6>
+                    <h6 class="card-title values pb-2">Email: ${engineerList[i].email}</h6>
+                    <a href="https://github.com/${engineerList[i].github}"class="card-title values">Github: ${engineerList[i].github}</a>
+            </div>
+        </div>`
+    }
+    return template;
+}
 
-//               <div class="custom-card card me-3" style="width: 18rem;">
-//                       <div class="card-body">
-//                           <h4 class="values">Tom</h4>
-//                           <h5 class="values">Engineer</h5>
-//                           <h6 class="card-title values pb-2">ID: 56</h6>
-//                           <h6 class="card-title values pb-2">Email: tom@gmail.com</h6>
-//                           <h6 class="card-title values forecast-humidity">GitHub: githubUser</h6>
-//                       </div>
-//                   </div>
+generateIntern = () => {
+    let template = '';
+    let internList = [];
+    employeeList.forEach(employee => {
+        if (employee.getRole() === 'Intern') {
+            internList.push(employee)
+        }
+    })
+    for (let i = 0; i < internList.length; i++) {
+        template +=
+            `<div class="custom-card card me-3" style="width: 18rem;">
+            <div class="card-body">
+                <h4 class="values">${internList[i].name}</h4>
+                    <h5 class="values">Intern</h5>
+                    <h6 class="card-title values pb-2">ID: ${internList[i].id}</h6>
+                    <h6 class="card-title values pb-2">Email: ${internList[i].email}</h6>
+                    <h6 class="card-title values">School: ${internList[i].school}</h6>
+            </div>
+        </div>`
+    }
+    return template;
+}
 
-//               <div class="custom-card card me-3" style="width: 18rem;">
-//                       <div class="card-body">
-//                           <h4 class="values">Eric</h4>
-//                           <h5 class="values">Engineer</h5>
-//                           <h6 class="card-title values forecast-temp pb-2">ID: 42</h6>
-//                           <h6 class="card-title values forecast-wind pb-2">Email: eric@gmail.com</h6>
-//                           <h6 class="card-title values forecast-humidity">GitHub: githubUser</h6>
-//                       </div>
-//                   </div>
+const generateHTML = () => {
+    `<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Weather Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="./dist/style.css">
+    </head>
+    <body>
+    <!-- Header containing application title -->
+    <header class="custom-header text-light p-3">
+        <div class="text-center">
+            <h3>My Team</h3>
+        </div>
+    </header>
+    <!-- Team Cards -->
+    <div class="forecast-cards d-flex flex-row">
+        ${generateManager()}
+        ${generateEngineer()}
+        ${generateIntern()}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    </body>
+    </html>`;
+}
 
-//               <div class="custom-card card me-3" style="width: 18rem;">
-//                       <div class="card-body">
-//                           <h4 class="values">Rachel</h4>
-//                           <h5 class="values">Engineer</h5>
-//                           <h6 class="card-title values forecast-temp pb-2">ID: 58</h6>
-//                           <h6 class="card-title values forecast-wind pb-2">Email: rachel@gmail.com</h6>
-//                           <h6 class="card-title values forecast-humidity">GitHub: githubUser</h6>
-//                       </div>
-//                   </div>
+const htmlPageContent = generateHTML();
 
-//               <div class="custom-card card me-3" style="width: 18rem;">
-//                       <div class="card-body">
-//                           <h4 class="values">12/09/2022</h4>
-//                           <h5 class="values">Intern</h5>
-//                           <h6 class="card-title values forecast-temp pb-2">ID: 44</h6>
-//                           <h6 class="card-title values forecast-wind pb-2">Email: test@gmail.com</h6>
-//                           <h6 class="card-title values forecast-humidity">School: UCSB</h6>
-//                       </div>
-//                   </div>
-//               </div>
-//           </div>
-
-//       </div>
-
-//   </div>
-//   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-//   <script src="assets/js/script.js"></script>
-
-// </body></html>`;
-// }
+fs.writeFile('./dist/index.html', htmlPageContent, (err) =>
+    err ? console.log(err) : console.log('Successfully created index.html!')
+);
 
 // write tests
