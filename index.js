@@ -165,15 +165,30 @@ generateManager = () => {
     employeeList.forEach(employee => {
         if (employee.getRole() === 'Manager') {
             template +=
-                `<div class="custom-card card me-3" style="width: 18rem;">
-                    <div class="card-body">
-                        <h4 class="values">${employee.name}</h4>
-                        <h5 class="values">Manager</h5>
-                        <h6 class="card-title values pb-2">ID: ${employee.id}</h6>
-                        <h6 class="card-title values pb-2">Email: ${employee.email}</h6>
-                        <h6 class="card-title values">Office Number: ${employee.officeNumber}</h6>
-                    </div>
-                </div>`
+                // `<div class="custom-card card me-3" style="width: 18rem;">
+                //     <div class="card-body">
+                //         <h4 class="values">${employee.name}</h4>
+                //         <h5 class="values">Manager</h5>
+                //         <h6 class="card-title values pb-2">ID: ${employee.id}</h6>
+                //         <h6 class="card-title values pb-2">Email: ${employee.email}</h6>
+                //         <h6 class="card-title values">Office Number: ${employee.officeNumber}</h6>
+                //     </div>
+                // </div>`;
+
+                `<div class="card me-3" style="width: 18rem; margin-top: 15px">
+                <div class="card-body" style="background-color: #488cff;">
+                    <h5 class="card-title">${employee.name}</h5>
+                    <p class="card-text">Manager</p>
+                </div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush" style="padding: 15px;border: 1px solid lightgrey;">
+                    <li class="list-group-item">ID: ${employee.id}</li>
+                    <li class="list-group-item"><span><a href="mailto: ${employee.email}">Email: ${employee.email}</a></span></li>
+                    <li class="list-group-item">Office Number: ${employee.officeNumber}</li>
+                </ul>
+            </div>
+            </div>`;
+
         }
     });
     return template;
@@ -190,15 +205,30 @@ generateEngineer = () => {
     })
     for (let i = 0; i < engineerList.length; i++) {
         template +=
-            `<div class="custom-card card me-3" style="width: 18rem;">
-            <div class="card-body">
-                <h4 class="values">${engineerList[i].name}</h4>
-                    <h5 class="values">Intern</h5>
-                    <h6 class="card-title values pb-2">ID: ${engineerList[i].id}</h6>
-                    <h6 class="card-title values pb-2">Email: ${engineerList[i].email}</h6>
-                    <a href="https://github.com/${engineerList[i].github}"class="card-title values">Github: ${engineerList[i].github}</a>
+            //     `<div class="custom-card card me-3" style="width: 18rem;">
+            //     <div class="card-body">
+            //         <h4 class="values">${engineerList[i].name}</h4>
+            //             <h5 class="values">Engineer</h5>
+            //             <h6 class="card-title values pb-2">ID: ${engineerList[i].id}</h6>
+            //             <h6 class="card-title values pb-2">Email: ${engineerList[i].email}</h6>
+            //             <a href="https://github.com/${engineerList[i].github}"target="_blank"class="card-title values">Github: ${engineerList[i].github}</a>
+            //     </div>
+            // </div>`
+
+            `<div class="card me-3" style="width: 18rem; margin-top: 15px">
+            <div class="card-body" style="background-color: #488cff;">
+                <h5 class="card-title">${engineerList[i].name}</h5>
+                <p class="card-text">Engineer</p>
             </div>
-        </div>`
+        <div class="card-body">
+            <ul class="list-group list-group-flush" style="padding: 15px;border: 1px solid lightgrey;">
+                <li class="list-group-item">ID: ${engineerList[i].id}</li>
+                <li class="list-group-item"><span><a href="mailto: ${engineerList[i].email}">Email: ${engineerList[i].email}</a></span></li>
+                <li class="list-group-item"><span><a href="https://github.com/${engineerList[i].github}target="_blank"class="card-title values">Github: ${engineerList[i].github}</a></span></li>
+            </ul>
+        </div>
+        </div>`;
+
     }
     return template;
 }
@@ -214,45 +244,180 @@ generateIntern = () => {
     })
     for (let i = 0; i < internList.length; i++) {
         template +=
-            `<div class="custom-card card me-3" style="width: 18rem;">
-            <div class="card-body">
-                <h4 class="values">${internList[i].name}</h4>
-                    <h5 class="values">Intern</h5>
-                    <h6 class="card-title values pb-2">ID: ${internList[i].id}</h6>
-                    <h6 class="card-title values pb-2">Email: ${internList[i].email}</h6>
-                    <h6 class="card-title values">School: ${internList[i].school}</h6>
-            </div>
-        </div>`
+            //     `<div class="custom-card card me-3" style="width: 18rem;">
+            //     <div class="card-body">
+            //         <h4 class="values">${internList[i].name}</h4>
+            //             <h5 class="values">Intern</h5>
+            //             <h6 class="card-title values pb-2">ID: ${internList[i].id}</h6>
+            //             <h6 class="card-title values pb-2">Email: ${internList[i].email}</h6>
+            //             <h6 class="card-title values">School: ${internList[i].school}</h6>
+            //     </div>
+            // </div>`;
+
+            `<div class="card me-3" style="width: 18rem; margin-top: 15px">
+                    <div class="card-body" style="background-color: #488cff;">
+                        <h5 class="card-title">${internList[i].name}</h5>
+                        <p class="card-text">Intern</p>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush" style="padding: 15px;border: 1px solid lightgrey;">
+                            <li class="list-group-item">ID: ${internList[i].id}</li>
+                            <li class="list-group-item"><span><a href="mailto: ${internList[i].email}">Email: ${internList[i].email}</a></span></li>
+                            <li class="list-group-item">School: ${internList[i].school}</li>
+                        </ul>
+                    </div>
+                </div>`
     }
     return template;
 }
 
 // Uses team generator functions to return a string formatted as HTML
 const generateHTML = () => {
-    return `<html lang="en">
+    // return `<html lang="en">
+    // <head>
+    // <meta charset="utf-8">
+    // <meta name="viewport" content="width=device-width, initial-scale=1">
+    // <title>Weather Dashboard</title>
+    // <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    // <link rel="stylesheet" href="./dist/style.css">
+    // </head>
+    // <body>
+    // <!-- Header containing application title -->
+    // <header class="custom-header text-light p-5">
+    //     <div class="text-center">
+    //         <h3>My Team</h3>
+    //     </div>
+    // </header>
+    // <!-- Team Cards -->
+    // <div class = "d-flex flex-column align-items-center justify-content-center" style = 'margin-top: 10vh'>
+    // //         <!-- style="display: flex; flex-direction: column; height: auto; align-items: center; justify-content: center; margin-top: 10vh;"> -->
+    // <div class="forecast-cards d-flex flex-row">
+    //     ${generateManager()}
+    //     ${generateEngineer()}
+    //     ${generateIntern()}
+    // </div>
+    // </div>
+    // <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    // </body>
+    // </html>`;
+
+    return `
+    <html lang="en">
     <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Weather Dashboard</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link rel="stylesheet" href="./dist/style.css">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Team Dashboard</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        <link rel="stylesheet" href="./style.css">
     </head>
     <body>
-    <!-- Header containing application title -->
-    <header class="custom-header text-light p-3">
-        <div class="text-center">
-            <h3>My Team</h3>
+        <!-- Header containing application title -->
+        <header class="custom-header text-light p-5">
+            <div class="text-center">
+                <h3>My Team</h3>
+            </div>
+        </header>
+        <div class = "d-flex flex-column align-items-center justify-content-center" style = 'margin-top: 10vh'>
+            <!-- style="display: flex; flex-direction: column; height: auto; align-items: center; justify-content: center; margin-top: 10vh;"> -->
+            <div class="team-cards d-flex flex-row flex-wrap justify-content-center" style="width: 50%;">
+                ${generateManager()}
+                ${generateEngineer()}
+                ${generateIntern()}
+            </div>
         </div>
-    </header>
-    <!-- Team Cards -->
-    <div class="forecast-cards d-flex flex-row">
-        ${generateManager()}
-        ${generateEngineer()}
-        ${generateIntern()}
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+            crossorigin="anonymous"></script>
+        <script src="assets/js/script.js"></script>
     </body>
     </html>`;
+
+    //return `
+    //     <body>
+    //     <!-- Header containing application title -->
+    //     <header class="custom-header text-light p-5">
+    //         <div class="text-center">
+    //             <h3>My Team</h3>
+    //         </div>
+    //     </header>
+    //     <div class = "d-flex flex-column align-items-center justify-content-center" style = 'margin-top: 10vh'>
+    //         <!-- style="display: flex; flex-direction: column; height: auto; align-items: center; justify-content: center; margin-top: 10vh;"> -->
+    //         <div class="team-cards d-flex flex-row flex-wrap justify-content-center" style="width: 50%;">
+    //             <div class="card me-3" style="width: 18rem; margin-top: 15px ">
+    //                 <div class="card-body" style="background-color: #488cff;">
+    //                     <h5 class="card-title">Name</h5>
+    //                     <p class="card-text">Role</p>
+    //                 </div>
+    //                 <div class="card-body">
+    //                     <ul class="list-group list-group-flush" style="padding: 15px;border: 1px solid lightgrey;">
+    //                         <li class="list-group-item">ID: </li>
+    //                         <li class="list-group-item">Email: </li>
+    //                         <li class="list-group-item">School: </li>
+    //                     </ul>
+    //                 </div>
+    //             </div>
+    //             <div class="card me-3" style="width: 18rem; margin-top: 15px">
+    //                 <div class="card-body" style="background-color: #488cff;">
+    //                     <h5 class="card-title">Name</h5>
+    //                     <p class="card-text">Role</p>
+    //                 </div>
+    //                 <div class="card-body">
+    //                     <ul class="list-group list-group-flush" style="padding: 15px;border: 1px solid lightgrey;">
+    //                         <li class="list-group-item">ID: </li>
+    //                         <li class="list-group-item">Email: </li>
+    //                         <li class="list-group-item">School: </li>
+    //                     </ul>
+    //                 </div>
+    //             </div>
+    // <div class="card me-3" style="width: 18rem; margin-top: 15px">
+    //     <div class="card-body" style="background-color: #488cff;">
+    //         <h5 class="card-title">Name</h5>
+    //         <p class="card-text">Role</p>
+    //     </div>
+    //     <div class="card-body">
+    //         <ul class="list-group list-group-flush" style="padding: 15px;border: 1px solid lightgrey;">
+    //             <li class="list-group-item">ID: </li>
+    //             <li class="list-group-item">Email: </li>
+    //             <li class="list-group-item">School: </li>
+    //         </ul>
+    //     </div>
+    // </div>
+    //             <div class="card me-3" style="width: 18rem; margin-top: 15px">
+    //                 <div class="card-body" style="background-color: #488cff;">
+    //                     <h5 class="card-title">Name</h5>
+    //                     <p class="card-text">Role</p>
+    //                 </div>
+    //                 <div class="card-body">
+    //                     <ul class="list-group list-group-flush" style="padding: 15px;border: 1px solid lightgrey;">
+    //                         <li class="list-group-item">ID: </li>
+    //                         <li class="list-group-item">Email: </li>
+    //                         <li class="list-group-item">School: </li>
+    //                     </ul>
+    //                 </div>
+    //             </div>
+    //             <div class="card me-3" style="width: 18rem; margin-top: 15px">
+    //                 <div class="card-body" style="background-color: #488cff;">
+    //                     <h5 class="card-title">Name</h5>
+    //                     <p class="card-text">Role</p>
+    //                 </div>
+    //                 <div class="card-body">
+    //                     <ul class="list-group list-group-flush" style="padding: 15px;border: 1px solid lightgrey;">
+    //                         <li class="list-group-item">ID: </li>
+    //                         <li class="list-group-item">Email: </li>
+    //                         <li class="list-group-item">School: </li>
+    //                     </ul>
+    //                 </div>
+    //             </div>
+    //         </div>
+    //     </div>
+    //     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    //         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    //         crossorigin="anonymous"></script>
+    //     <script src="assets/js/script.js"></script>
+    // </body>
+    // </html>`
+
 }
 
 // Runs team member prompts, generates a string of formatted HTML, then writes a new index.html file to the ./dist folder in the repository

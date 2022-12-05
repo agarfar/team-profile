@@ -1,4 +1,4 @@
-
+/* 
 
 .custom-header{
     background-image: linear-gradient(to right, rgb(55, 87, 228), rgb(1, 0, 68));
@@ -10,4 +10,28 @@
 
 .custom-card{
     background-color: rgb(23, 23, 56);
+} */
+
+.custom-header {
+    background-color: red;
+}
+
+/* .values{
+    color:white;
+} */
+
+.custom-card {
+    /* background-color: rgb(23, 23, 56); */
+    margin-top: 15px;
+}
+
+a {
+    color: rgb(62, 62, 231);
+    text-decoration: none;
+    /* no underline */
+    cursor: pointer;
+}
+
+li {
+    font-size: smaller;
 }
