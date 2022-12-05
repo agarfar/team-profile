@@ -312,7 +312,7 @@ const generateHTML = () => {
         <link rel="stylesheet" href="./style.css">
     </head>
     <body>
-        <!-- Header containing application title -->
+        <!-- Header containing page title -->
         <header class="custom-header text-light p-5">
             <div class="text-center">
                 <h3>My Team</h3>
