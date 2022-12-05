@@ -9,6 +9,7 @@ const Intern = require('./lib/intern');
 
 const employeeList = [];
 
+// Manager Prompt Questions
 const managerQuestions = [
     {
         type: "input",
@@ -35,6 +36,7 @@ const managerQuestions = [
     },
 ];
 
+// Engineer Prompt Questions
 const engineerQuestions = [
     {
         type: "input",
@@ -61,6 +63,7 @@ const engineerQuestions = [
     },
 ];
 
+// Intern Prompt Questions
 const internQuestions = [
     {
         type: "input",
@@ -87,6 +90,7 @@ const internQuestions = [
     },
 ];
 
+// Prompt to add another employee
 const employeeQuestion = [
     {
         type: "list",
@@ -96,8 +100,7 @@ const employeeQuestion = [
     },
 ]
 
-// create function that runs inquirer prompt questions .then( ()=> inquirer.prompt()then) // chain promises
-
+// returns manager prompt, waits for response, then returns prompt to add another employee
 const teamQuestions = () => {
     return managerPrompt()
         .then(() => {
@@ -105,6 +108,7 @@ const teamQuestions = () => {
         })
 }
 
+// Asks user for manager information, then pushes new Manager object to list of employees
 const managerPrompt = () => {
     return inquirer
         .prompt(managerQuestions)
@@ -113,6 +117,7 @@ const managerPrompt = () => {
         })
 };
 
+// Asks user for engineer information, then pushes new engineer object to list of employees
 const engineerPrompt = () => {
     return inquirer
         .prompt(engineerQuestions)
@@ -121,6 +126,7 @@ const engineerPrompt = () => {
         })
 };
 
+// Asks user for intern information, then pushes new Intern object to list of employees
 const internPrompt = () => {
     return inquirer
         .prompt(internQuestions)
@@ -129,6 +135,7 @@ const internPrompt = () => {
         })
 };
 
+// Recursive function -> if user requests to input engineer/intern information, the prompt loops. If not, the function ends and a list of employees is returned
 const employeePrompt = () => {
     return inquirer
         .prompt(employeeQuestion)
@@ -152,6 +159,7 @@ const employeePrompt = () => {
         })
 }
 
+// Uses list of employees to generate card with information on team manager
 generateManager = () => {
     let template = '';
     employeeList.forEach(employee => {
@@ -171,6 +179,7 @@ generateManager = () => {
     return template;
 }
 
+// Uses list of employees to generate card with information on team engineer
 generateEngineer = () => {
     let template = '';
     let engineerList = [];
@@ -194,6 +203,7 @@ generateEngineer = () => {
     return template;
 }
 
+// Uses list of employees to generate card with information on team intern
 generateIntern = () => {
     let template = '';
     let internList = [];
@@ -217,6 +227,7 @@ generateIntern = () => {
     return template;
 }
 
+// Uses team generator functions to return a string formatted as HTML
 const generateHTML = () => {
     return `<html lang="en">
     <head>
@@ -244,21 +255,12 @@ const generateHTML = () => {
     </html>`;
 }
 
+// Runs team member prompts, generates a string of formatted HTML, then writes a new index.html file to the ./dist folder in the repository
 teamQuestions()
     .then(() => {
         const htmlPageContent = generateHTML();
-        console.log(htmlPageContent);
+        // console.log(htmlPageContent);
         fs.writeFile('./dist/index.html', htmlPageContent, (err) =>
             err ? console.log(err) : console.log('Successfully created index.html!')
         );
     })
-
-// end point = loop employee array = convert into HTML
-
-// const htmlPageContent = generateHTML();
-
-// fs.writeFile('./dist/index.html', htmlPageContent, (err) =>
-//     err ? console.log(err) : console.log('Successfully created index.html!')
-// );
-
-// write tests
