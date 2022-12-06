@@ -183,7 +183,7 @@ generateManager = () => {
             <div class="card-body">
                 <ul class="list-group list-group-flush" style="padding: 15px;border: 1px solid lightgrey;">
                     <li class="list-group-item">ID: ${employee.id}</li>
-                    <li class="list-group-item"><span><a href="mailto: ${employee.email}">Email: ${employee.email}</a></span></li>
+                    <li class="list-group-item"><span><a href="mailto: ${employee.email}"><span style = "color: black">Email: </span>${employee.email}</a></span></li>
                     <li class="list-group-item">Office Number: ${employee.officeNumber}</li>
                 </ul>
             </div>
@@ -223,8 +223,8 @@ generateEngineer = () => {
         <div class="card-body">
             <ul class="list-group list-group-flush" style="padding: 15px;border: 1px solid lightgrey;">
                 <li class="list-group-item">ID: ${engineerList[i].id}</li>
-                <li class="list-group-item"><span><a href="mailto: ${engineerList[i].email}">Email: ${engineerList[i].email}</a></span></li>
-                <li class="list-group-item"><span><a href="https://github.com/${engineerList[i].github}target="_blank"class="card-title values">Github: ${engineerList[i].github}</a></span></li>
+                <li class="list-group-item"><span><a href="mailto: ${engineerList[i].email}"><span style="color: black">Email: </span>${engineerList[i].email}</a></span></li>
+                <li class="list-group-item"><span><a href="https://github.com/${engineerList[i].github}target="_blank"class="card-title values"><span style = "color: black">GitHub: </span>${engineerList[i].github}</a></span></li>
             </ul>
         </div>
         </div>`;
@@ -262,7 +262,7 @@ generateIntern = () => {
                     <div class="card-body">
                         <ul class="list-group list-group-flush" style="padding: 15px;border: 1px solid lightgrey;">
                             <li class="list-group-item">ID: ${internList[i].id}</li>
-                            <li class="list-group-item"><span><a href="mailto: ${internList[i].email}">Email: ${internList[i].email}</a></span></li>
+                            <li class="list-group-item"><span><a href="mailto: ${internList[i].email}"><span style = "color: black">Email: </span>${internList[i].email}</a></span></li>
                             <li class="list-group-item">School: ${internList[i].school}</li>
                         </ul>
                     </div>
