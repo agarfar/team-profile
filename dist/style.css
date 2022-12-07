@@ -1,28 +1,6 @@
-/* 
-
-.custom-header{
-    background-image: linear-gradient(to right, rgb(55, 87, 228), rgb(1, 0, 68));
-}
-
-.values{
-    color:white;
-}
-
-.custom-card{
-    background-color: rgb(23, 23, 56);
-} */
-
-.custom-header {
-    background-color: red;
-}
-
-/* .values{
-    color:white;
-} */
-
-.custom-card {
-    /* background-color: rgb(23, 23, 56); */
-    margin-top: 15px;
+h5,
+p {
+    color: white
 }
 
 a {
@@ -34,4 +12,18 @@ a {
 
 li {
     font-size: smaller;
+}
+
+svg {
+    color: white;
+    font-size: larger;
+}
+
+.custom-header {
+    background-color: red;
+}
+
+.custom-card {
+    /* background-color: rgb(23, 23, 56); */
+    margin-top: 15px;
 }
