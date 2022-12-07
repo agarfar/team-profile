@@ -1,3 +1,4 @@
+/* background color, text properties for team cards */
 h5,
 p {
     color: white
@@ -24,6 +25,5 @@ svg {
 }
 
 .custom-card {
-    /* background-color: rgb(23, 23, 56); */
     margin-top: 15px;
 }
