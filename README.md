@@ -26,9 +26,9 @@ Before running the application, make sure you have installed inquirer at version
 
 Navigate to the repository in the terminal. Then, run 'node index.js' and answer the prompts. Upon completion, an index.html will be generated in the 'dist' directory. 
 
-Watch the video at the provided link to see an example README output, or click on the image below: https://drive.google.com/file/d/1--hi6mdlsFblVFanUR5P2gKinCAIiNQs/view
+Watch the video at the provided link to see an example README output, or view below: https://drive.google.com/file/d/1--hi6mdlsFblVFanUR5P2gKinCAIiNQs/view
 
-[![Video Tutorial](./assets/images/Team_Profile.png)](./assets/videos/Team-Profile-Generator.mp4)
+https://user-images.githubusercontent.com/64799305/206075788-b3cabf1d-e7f3-4c93-9661-0b30658df5ea.mp4
 
 ## License
 
